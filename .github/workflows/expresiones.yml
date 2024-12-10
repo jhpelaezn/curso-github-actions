@@ -1,0 +1,58 @@
+name: Expresiones
+run-name: ¡Estoy aprendiendo a usar diferentes Expresiones!
+
+on: 
+  push:
+    branches:
+      - aprendiendo-github-actions
+
+env:
+  run-job: ${{ false }}
+  job-name: ${{ 'nombre mas chingon' }}
+
+
+jobs:
+  run-job:
+    if: ${{ env.run-job == true }}
+      
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Variable definition
+        run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
+
+      - name: Run script
+        run: python main.py
+
+  job-name:
+    if: ${{ startsWith(env.job-name, 'nombre') }}
+
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Variable definition
+        run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
+
+      - name: Run script
+        run: python main.py
+
+  branch-name:
+    if: ${{ github.ref == 'refs/heads/main'}}
+
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Variable definition
+        run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
+
+      - name: Run script
+        run: python main.py
