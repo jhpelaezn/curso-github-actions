@@ -13,7 +13,7 @@ env:
 
 jobs:
   run-job:
-    if: ${{ env.run-job }}
+    if: ${{ env.run-job == 'true' }}
       
     runs-on: ubuntu-latest
     
