@@ -1,6 +1,10 @@
 name: Expresiones
 run-name: ¡Estoy aprendiendo a usar Expresiones!
 on:
+  push:
+    branches:
+      - aprendiendo-github-actions
+      
   workflow_dispatch:
     inputs:
       edad:
