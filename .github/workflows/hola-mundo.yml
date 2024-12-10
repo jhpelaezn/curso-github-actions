@@ -1,22 +1,19 @@
-name: Ejemplo1
+name: Ejemplo1 - Hola Mundo
+run-name: ¡Estoy aprendiendo GitHub Actions!
 
-on:
-  push:
-    branches: [ "aprendiendo-github-actions" ]
-  pull_request:
-    branches: [ "main" ]
+on: [push]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build:
+  hola-mundo:
   
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Variable definition
+        run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
 
       - name: Run script
         run: python main.py
