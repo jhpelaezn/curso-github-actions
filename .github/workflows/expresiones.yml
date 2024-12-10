@@ -1,52 +1,34 @@
 name: Expresiones
-run-name: ¡Estoy aprendiendo a usar diferentes Expresiones!
-
-on: 
-  push:
-    branches:
-      - aprendiendo-github-actions
-
-env:
-  run-job: ${{ false }}
-  job-name: ${{ 'nombre mas chingon' }}
-
-
+run-name: ¡Estoy aprendiendo a usar Expresiones!
+on:
+  workflow_dispatch:
+    inputs:
+      edad:
+        description: 'Edad'
+        required: true
+        type: number
+      nombre:
+        description: 'Tu nombre'
+        required: true
+        default: 'Juan'
+        type: string
 jobs:
-  run-job:
-    if: ${{ env.run-job }}
-      
+  mayor:
+    if: ${{ inputs.edad >= 18 }} 
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Variable definition
-        run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
-
-      - name: Run script
-        run: python main.py
-
-  job-name:
-    if: ${{ startsWith(env.job-name, 'nombre') }}
-
+      - name: Correr script
+        run: echo ${{ inputs.nombre }} es mayor de edad
+  menor:
+    if: ${{ inputs.edad < 18 }} 
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Variable definition
-        run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
-
-      - name: Run script
-        run: python main.py
+      - name: Correr script
+        run: echo ${{ inputs.nombre }} es menor de edad
 
   branch-name:
     if: ${{ github.ref == 'refs/heads/aprendiendo-github-actions'}}
-
     runs-on: ubuntu-latest
-    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
