@@ -5,6 +5,7 @@ on:
     branches:
       - aprendiendo-github-actions
 
+  #workflow_dispatch solo funciona en la rama default...
   workflow_dispatch:
     inputs:
       edad:
