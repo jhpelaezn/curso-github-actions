@@ -1,5 +1,5 @@
 name: Triggers
-run-name: ¡Estoy aprendiendo de Triggers!
+run-name: ¡Estoy aprendiendo a usar diferentes Triggers!
 
 on:
   push:
@@ -7,6 +7,7 @@ on:
       - aprendiendo-github-actions
 
   pull_request:
+    types: [opened, synchronize, reopened]
     branches:
       - main
 
