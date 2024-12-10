@@ -28,7 +28,7 @@ jobs:
         run: python main.py
 
   job-name:
-    if: ${{ startsWith(env.job-name, 'nombre') }}
+    if: ${{ startsWith(github.env.job-name, 'nombre') }}
 
     runs-on: ubuntu-latest
     
