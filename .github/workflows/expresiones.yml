@@ -13,7 +13,7 @@ env:
 
 jobs:
   run-job:
-    if: ${{ github.env.run-job }}
+    if: ${{ env.run-job }}
       
     runs-on: ubuntu-latest
     
@@ -28,7 +28,7 @@ jobs:
         run: python main.py
 
   job-name:
-    if: ${{ startsWith(github.env.job-name, 'nombre') }}
+    if: ${{ startsWith(env.job-name, 'nombre') }}
 
     runs-on: ubuntu-latest
     
@@ -43,7 +43,7 @@ jobs:
         run: python main.py
 
   branch-name:
-    if: ${{ github.ref == 'refs/heads/main'}}
+    if: ${{ github.ref == 'refs/heads/aprendiendo-github-actions'}}
 
     runs-on: ubuntu-latest
     
