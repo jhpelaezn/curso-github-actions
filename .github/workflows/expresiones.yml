@@ -4,18 +4,19 @@ on:
   push:
     branches:
       - aprendiendo-github-actions
-      
+
   workflow_dispatch:
     inputs:
       edad:
         description: 'Edad'
         required: true
         type: number
+        default: 36
       nombre:
         description: 'Tu nombre'
         required: true
-        default: 'Juan'
         type: string
+        default: 'Juan'
 jobs:
   mayor:
     if: ${{ inputs.edad >= 18 }} 
