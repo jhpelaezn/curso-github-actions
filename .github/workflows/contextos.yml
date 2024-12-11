@@ -1,0 +1,19 @@
+name: Contextos
+run-name: ¡Estoy aprendiendo a usar Contextos!
+
+on: [push]
+
+jobs:
+  hola-mundo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Branch name
+        run: echo ${{ github.ref }}
+
+      - name: More contexts
+        run: |
+          echo "Nombre del repositorio: ${{ github.repository }}"
+          echo "Nombre action en ejecucion: ${{ github.action }}"
