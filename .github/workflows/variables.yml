@@ -22,7 +22,7 @@ jobs:
           echo "Esta informacion es relevante para ${{ env.user }}"
           echo "Nombre del workflow: ${{ env.nombre_wf }}"
           echo "Nombre del job: ${{ env.nombre_job }}"
-          echo "Esta variable fue creada en las variables del repo: ${{ env.nombre }}"
+          echo "Esta variable fue creada en las variables del repo: ${{ env.NOMBRE }}"
         env:
           user: 'Hader'
           
