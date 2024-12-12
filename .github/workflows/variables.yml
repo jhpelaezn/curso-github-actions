@@ -1,0 +1,27 @@
+name: variables
+run-name: ¡Estoy aprendiendo a usar Variables!
+
+on: push
+
+env:
+  nombre_wf: ${{ github.workflow }}
+
+jobs:
+  variables-job:
+    runs-on: ubuntu-latest
+    
+    env:
+      nombre_job: '${{ github.job }}'
+    
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: variables_uses
+        run: |
+          echo "Esta informacion es relevante para ${{ user }}"
+          echo "Nombre del workflow: ${{ env.nombre_wf }}"
+          echo "Nombre del job: ${{ env.nombre_job }}"
+        env:
+          user: 'Hader'
+          
