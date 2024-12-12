@@ -19,7 +19,7 @@ jobs:
 
       - name: variables_uses
         run: |
-          echo "Esta informacion es relevante para ${{ user }}"
+          echo "Esta informacion es relevante para ${{ env.user }}"
           echo "Nombre del workflow: ${{ env.nombre_wf }}"
           echo "Nombre del job: ${{ env.nombre_job }}"
         env:
