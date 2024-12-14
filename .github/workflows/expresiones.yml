@@ -1,0 +1,46 @@
+name: Expresiones
+run-name: ¡Estoy aprendiendo a usar Expresiones!
+on:
+  push:
+    branches:
+      - aprendiendo-github-actions
+
+  #workflow_dispatch solo funciona en la rama default...
+  workflow_dispatch:
+    inputs:
+      edad:
+        description: 'Edad'
+        required: true
+        type: number
+        default: 36
+      nombre:
+        description: 'Tu nombre'
+        required: true
+        type: string
+        default: 'Juan'
+jobs:
+  mayor:
+    if: ${{ inputs.edad >= 18 }} 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Correr script
+        run: echo ${{ inputs.nombre }} es mayor de edad
+  menor:
+    if: ${{ inputs.edad < 18 }} 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Correr script
+        run: echo ${{ inputs.nombre }} es menor de edad
+
+  branch-name:
+    if: ${{ github.ref == 'refs/heads/main'}}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Variable definition
+        run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
+
+      - name: Run script
+        run: python main.py

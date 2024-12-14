@@ -1,0 +1,30 @@
+name: Triggers
+run-name: ¡Estoy aprendiendo a usar diferentes Triggers!
+
+on:
+  push:
+    branches:
+      - aprendiendo-github-actions
+
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - main
+
+  schedule:
+    - cron: '0 10 11 DEC *' # Minuto (0-59) | Hora (0-23) | Día del mes (1-31) | Mes (1-12 ó JAN-DEC) | Día de la semana (0-6 ó SUN-SAT)
+
+jobs:
+  hola-mundo:
+  
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Variable definition
+        run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
+
+      - name: Run script
+        run: python main.py
